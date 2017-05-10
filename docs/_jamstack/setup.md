@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Lorem Ipsum
+title: Setup Page
 description: It's all Latin to me
 ---
 
