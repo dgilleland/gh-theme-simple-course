@@ -2,13 +2,22 @@
     <ul>
       <li><a href="{{site.github.url}}">Home</a></li>
       {% for group in site.collections %}
-      {% if group.docs.size > 0 %}
-      {% assign rootUrl =  group.label | remove_first: '_' | append: '/readme' | prepend: '/' | downcase %}
-      {% assign docs = group.docs | map: 'url' | downcase %}
-      <li>
-        <a {% if page.path contains group.label %}class="active"{% endif %} {% if docs contains rootUrl%}href="{{group.docs | map: 'url' | prepend: site.github.url }}"{% endif %}>{{ group.label | replace: '_', ' ' }}</a>
-      </li>
-      {% endif %}
+        {% if group.docs.size > 0 %}
+          {% assign rootUrl =  group.label | remove_first: '_' | append: '/readme' | prepend: '/' | downcase %}
+          {% assign docs = group.docs | map: 'url' %}
+          {% for pg in docs %}
+            {% assign pglink = pg | downcase %}
+            {% if pglink contains rootUrl %}
+              {% assign linkurl = pg | prepend: site.github.url %}
+              {% break %}
+            {% else %}
+              {% assign linkurl = '' %}
+            {% endif %}
+          {% endfor %}
+          <li>
+            <a {% if page.path contains group.label %}class="active"{% endif %} {%if linkurl != '' %}href="{{ linkurl }}"{% endif %}>{{ group.label | replace: '_', ' ' }}</a>
+          </li>
+        {% endif %}
       {% endfor %}
     </ul>
   </nav>
