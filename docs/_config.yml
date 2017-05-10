@@ -9,5 +9,3 @@ collections:
     output: true
   jamstack:
     output: true
-  chap_ters:
-    output: true
