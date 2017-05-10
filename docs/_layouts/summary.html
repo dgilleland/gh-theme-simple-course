@@ -5,7 +5,9 @@
   <main>
     {{content}}
     <hr />
-    {% include summarycard.html %}
+    <div class="cards">
+      {% include summarycard.html %}
+    </div>
   </main>
   <header>
     <h1 class="{{page.styles.title}}">{{page.title}}</h1>

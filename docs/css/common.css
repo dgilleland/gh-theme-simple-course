@@ -240,3 +240,32 @@ blockquote.beta:before {
 }
 
 
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.card {
+  display: grid;
+  grid-template-areas: "photo title"
+                       "photo description";
+  grid-template-columns: 100px 400px;
+  margin: 10px;
+  border: solid 1px navy;
+  overflow: hidden;
+  max-width: min-content;
+}
+.card h2 {
+  grid-area: title;
+  
+}
+.card div {
+  grid-area: description
+}
+.card img {
+  grid-area: photo;
+  width: auto;
+  max-height: 90px;
+}
